@@ -18,7 +18,7 @@ public class JmsContext {
             context = new InitialContext();
             connectionFactory = (ConnectionFactory) context.lookup("ConnectionFactory");
             connection = connectionFactory.createConnection();
-            connection.setClientID("TestConnection");
+            connection.setClientID("Ac1dTest");
         } catch (NamingException | JMSException e) {
             System.err.println("Ошибка при создании JMS-контекста");
             throw new RuntimeException(e);

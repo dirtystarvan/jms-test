@@ -81,14 +81,16 @@ public class JmsExampleImpl implements JmsExample {
      */
     @Override
     public String subscribeMessage() {
+        String result = "";
         try {
             Session session = conn.createSession();
             TopicSubscriber subscr = session.createDurableSubscriber((Topic)context.lookup("TestTopic"), "Ac1d");
-            
-
+            Message msg = subscr.receive(5000L);
+            result = msg.getJMSCorrelationID();
         } catch (JMSException | NamingException e) {
             e.printStackTrace();
         }
-        return null;
+
+        return result;
     }
 }
